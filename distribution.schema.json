@@ -1,0 +1,42 @@
+{
+  "$id": "https://gbv.github.io/jskos/distribution.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "JSKOS Distribution",
+  "description": "available forms to access the content of an item",
+  "type": "object",
+  "definitions": {
+    "set": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "null"
+          },
+          {
+            "$ref": "#"
+          }
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "item.schema.json"
+    }
+  ],
+  "properties": {
+    "download": {
+      "description": "location of a file in given format",
+      "$ref": "resource.schema.json#/definitions/url"
+    },
+    "mimetype": {
+      "description": "Internet Media Type (also known as MIME type)",
+      "type": "string"
+    },
+    "format": {
+      "description": "data format identifier of the file",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}
