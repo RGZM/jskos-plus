@@ -31,6 +31,10 @@
         },
         {
           "type": "string",
+          "pattern": "^\\d{4}-[01]\\d-[0123]\\dT[0-2]\\d:[0-5]\\d:[0-5]\\d$"
+        },
+        {
+          "type": "string",
           "pattern": "^\\d{4}-[01]\\d$"
         },
         {
@@ -48,19 +52,6 @@
           },
           {
             "type": "string"
-          }
-        ]
-      }
-    },
-    "set": {
-      "type": "array",
-      "items": {
-        "anyOf": [
-          {
-            "type": "null"
-          },
-          {
-            "$ref": "#"
           }
         ]
       }
@@ -104,19 +95,19 @@
     },
     "creator": {
       "description": "agent primarily responsible for creation of resource",
-      "$ref": "#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "contributor": {
       "description": "agent responsible for making contributions to the resource",
-      "$ref": "#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "publisher": {
       "description": "agent responsible for making the resource available",
-      "$ref": "#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "partOf": {
       "description": "resources which this resource is part of (if no other field applies)",
-      "$ref": "#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "annotations": {
       "type": "array",

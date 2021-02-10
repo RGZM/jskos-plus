@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en_US.UTF-8">
+<html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Jakob Voß" />
-  <meta name="date" content="2019-12-02" />
+  <meta name="date" content="2021-02-10" />
   <title>JSKOS data format for Knowledge Organization Systems</title>
    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -74,7 +74,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <header>
 <h1 class="title">JSKOS data format for Knowledge Organization Systems</h1>
 <h3 class="author">Jakob Voß</h3>
-<h4 class="date">2019-12-02 (version 0.4.6)</h4>
+<h4 class="date">2021-02-10 (version 0.4.7)</h4>
 </header>
 
 <h1>Table of Contents</h1>
@@ -95,6 +95,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><a href="#language-range"><span class="toc-section-number">2.8</span> language range</a></li>
 <li><a href="#language-map"><span class="toc-section-number">2.9</span> language map</a></li>
 <li><a href="#location"><span class="toc-section-number">2.10</span> location</a></li>
+<li><a href="#address"><span class="toc-section-number">2.11</span> address</a></li>
 </ul></li>
 <li><a href="#object-types"><span class="toc-section-number">3</span> Object types</a><ul>
 <li><a href="#resource"><span class="toc-section-number">3.1</span> Resource</a></li>
@@ -238,24 +239,24 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th style="text-align: left;"></th>
-<th style="text-align: left;">JSKOS</th>
-<th style="text-align: left;">RFC 3066</th>
-<th style="text-align: left;">RFC 4647</th>
+<th></th>
+<th>JSKOS</th>
+<th>RFC 3066</th>
+<th>RFC 4647</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">language tag for English</td>
-<td style="text-align: left;"><code>en</code></td>
-<td style="text-align: left;"><code>en</code></td>
-<td style="text-align: left;"></td>
+<td>language tag for English</td>
+<td><code>en</code></td>
+<td><code>en</code></td>
+<td></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">languag range for all English variants</td>
-<td style="text-align: left;"><code>en-</code></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><code>en</code></td>
+<td>languag range for all English variants</td>
+<td><code>en-</code></td>
+<td></td>
+<td><code>en</code></td>
 </tr>
 </tbody>
 </table>
@@ -310,6 +311,48 @@ alpha          = %x61-7A  ; a-z</code></pre>
   <span class="dt">&quot;coordinates&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="fl">-49.946944</span><span class="ot">,</span> <span class="fl">41.7325</span><span class="ot">,</span> <span class="dv">-3803</span><span class="ot">]</span>
 <span class="fu">}</span></code></pre></div>
 </div>
+</section>
+<section id="address" class="level2">
+<h2><span class="header-section-number">2.11</span> address</h2>
+<p>An <strong>address</strong> is a JSON object with any of the following keys, each mapped to a string:</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">field</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">street</td>
+<td>the street address</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ext</td>
+<td>the extended address (e.g., apartment or suite number)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">pobox</td>
+<td>the post office box</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">locality</td>
+<td>the locality (e.g., city)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">region</td>
+<td>the region (e.g., state or province)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">code</td>
+<td>the postal code</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">country</td>
+<td>the country name</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 <section id="object-types" class="level1">
@@ -390,11 +433,16 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <td style="text-align: left;">agent responsible for making contributions to the resource</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">source</td>
+<td><a href="#set">set</a></td>
+<td style="text-align: left;">sources from which the described resource is derived</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">publisher</td>
 <td><a href="#set">set</a></td>
 <td style="text-align: left;">agent responsible for making the resource available</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">partOf</td>
 <td><a href="#set">set</a></td>
 <td style="text-align: left;"><a href="#resource">resources</a> which this resource is part of (if no other field applies)</td>
@@ -406,7 +454,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="item" class="level2">
 <h2><span class="header-section-number">3.2</span> Item</h2>
-<p>An <strong>item</strong> is a <a href="#resource">resource</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>partOf</code>, <code>publisher</code>, <code>type</code>, and <code>uri</code>):</p>
+<p>An <strong>item</strong> is a <a href="#resource">resource</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>partOf</code>, <code>publisher</code>, <code>source</code>, <code>type</code>, and <code>uri</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -492,21 +540,36 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <td style="text-align: left;">other date somehow related to the item</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">startPlace</td>
+<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;">where an item started (e.g. place of birth)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">endPlace</td>
+<td style="text-align: left;"><a href="#set">set</a></td>
+<td style="text-align: left;">where an item ended (e.g. place of death)</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">location</td>
 <td style="text-align: left;"><a href="#location">location</a></td>
 <td style="text-align: left;">geographic location of the item</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">address</td>
+<td style="text-align: left;"><a href="#address">address</a></td>
+<td style="text-align: left;">postal address of the item</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">subject</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">what this item is about (e.g. topic)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">subjectOf</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">resources about this item (e.g. documentation)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">depiction</td>
 <td style="text-align: left;"><a href="#list">list</a> of <a href="#url">URL</a></td>
 <td style="text-align: left;">list of image URLs depicting the item</td>
@@ -517,7 +580,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="concept" class="level2">
 <h2><span class="header-section-number">3.3</span> Concept</h2>
-<p>A <strong>concept</strong> is an <a href="#item">item</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
+<p>A <strong>concept</strong> is an <a href="#item">item</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, <code>url</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -566,16 +629,6 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <td style="text-align: left;">topConceptOf</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;"><a href="#concept-schemes">concept schemes</a> or URI of the concept schemes</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">startPlace</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;">where a concepts started (e.g. place of birth)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">endPlace</td>
-<td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;">where a concept ended (e.g. place of death)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">mappings</td>
@@ -650,17 +703,17 @@ alpha          = %x61-7A  ; a-z</code></pre>
   <span class="dt">&quot;memberList&quot;</span><span class="fu">:</span> <span class="ot">[</span>
     <span class="fu">{</span>
       <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://dewey.info/class/305.4/e23/&quot;</span><span class="fu">,</span>
-      <span class="dt">&quot;notation&quot;</span><span class="fu">:</span> <span class="st">&quot;305.4&quot;</span><span class="fu">,</span>
+      <span class="dt">&quot;notation&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;305.4&quot;</span><span class="ot">]</span><span class="fu">,</span>
       <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;en&quot;</span><span class="fu">:</span> <span class="st">&quot;Women&quot;</span> <span class="fu">}</span>
     <span class="fu">}</span><span class="ot">,</span>
     <span class="fu">{</span>
       <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://dewey.info/class/2--411/e23/&quot;</span><span class="fu">,</span>
-      <span class="dt">&quot;notation&quot;</span><span class="fu">:</span> <span class="st">&quot;T2--411&quot;</span><span class="fu">,</span>
+      <span class="dt">&quot;notation&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;T2--411&quot;</span><span class="ot">]</span><span class="fu">,</span>
       <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;en&quot;</span><span class="fu">:</span> <span class="st">&quot;Scotland&quot;</span> <span class="fu">}</span>
     <span class="fu">}</span><span class="ot">,</span>
     <span class="fu">{</span>
       <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://dewey.info/class/1--09033/e23/&quot;</span><span class="fu">,</span>
-      <span class="dt">&quot;notation&quot;</span><span class="fu">:</span> <span class="st">&quot;T1--09033&quot;</span><span class="fu">,</span>
+      <span class="dt">&quot;notation&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;T1--09033&quot;</span><span class="ot">]</span><span class="fu">,</span>
       <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;en&quot;</span><span class="fu">:</span> <span class="st">&quot;18th century, 1700-1799&quot;</span> <span class="fu">}</span>
     <span class="fu">}</span>
   <span class="ot">]</span>
@@ -669,7 +722,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="concept-schemes" class="level2">
 <h2><span class="header-section-number">3.4</span> Concept Schemes</h2>
-<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>concept scheme</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -743,7 +796,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="concept-occurrences" class="level2">
 <h2><span class="header-section-number">3.5</span> Concept Occurrences</h2>
-<p>An <strong>occurrence</strong> is a <a href="#resource">resource</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>partOf</code>, <code>publisher</code>, <code>type</code>, <code>uri</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
+<p>An <strong>occurrence</strong> is a <a href="#resource">resource</a> and <a href="#concept-bundles">concept bundle</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>partOf</code>, <code>publisher</code>, <code>source</code>, <code>type</code>, <code>uri</code>, <code>memberSet</code>, <code>memberList</code>, <code>memberChoice</code>, and <code>memberRoles</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -847,7 +900,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="registries" class="level2">
 <h2><span class="header-section-number">3.6</span> Registries</h2>
-<p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>registry</strong> is an <a href="#item">item</a> with the following optional fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -918,7 +971,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="distributions" class="level2">
 <h2><span class="header-section-number">3.7</span> Distributions</h2>
-<p>A <strong>distribution</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
+<p>A <strong>distribution</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>):</p>
 <table>
 <thead>
 <tr class="header">
@@ -960,6 +1013,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <span class="fu">}</span></code></pre></div>
 <p>Distribution of a RDF/XML with SKOS data:</p>
 <div class="sourceCode"><pre class="sourceCode json"><code class="sourceCode json"><span class="fu">{</span>
+  <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;en&quot;</span><span class="fu">:</span> <span class="st">&quot;SKOS in RDF/XML&quot;</span> <span class="fu">},</span>
   <span class="dt">&quot;download&quot;</span><span class="fu">:</span> <span class="st">&quot;http://example.org/data/dump.rdf&quot;</span><span class="fu">,</span>
   <span class="dt">&quot;mimetype&quot;</span><span class="fu">:</span> <span class="st">&quot;application/rdf+xml&quot;</span><span class="fu">,</span>
   <span class="dt">&quot;format&quot;</span><span class="fu">:</span> <span class="st">&quot;http://www.w3.org/2004/02/skos/core&quot;</span>
@@ -974,7 +1028,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="concordances" class="level2">
 <h2><span class="header-section-number">3.8</span> Concordances</h2>
-<p>A <strong>concordance</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
+<p>A <strong>concordance</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>fromScheme</code> and <code>toScheme</code> are optional.</p>
 <table>
 <thead>
 <tr class="header">
@@ -1028,7 +1082,7 @@ alpha          = %x61-7A  ; a-z</code></pre>
 </section>
 <section id="concept-mappings" class="level2">
 <h2><span class="header-section-number">3.9</span> Concept Mappings</h2>
-<p>A <strong>mapping</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>from</code> and <code>to</code> are optional.</p>
+<p>A <strong>mapping</strong> is an <a href="#item">item</a> with the following fields (in addition to the optional fields <code>@context</code>, <code>address</code>, <code>altLabel</code>, <code>changeNote</code>, <code>contributor</code>, <code>created</code>, <code>creator</code>, <code>definition</code>, <code>depiction</code>, <code>editorialNote</code>, <code>endDate</code>, <code>endPlace</code>, <code>example</code>, <code>hiddenLabel</code>, <code>historyNote</code>, <code>identifier</code>, <code>issued</code>, <code>location</code>, <code>modified</code>, <code>notation</code>, <code>note</code>, <code>partOf</code>, <code>prefLabel</code>, <code>publisher</code>, <code>scopeNote</code>, <code>source</code>, <code>startDate</code>, <code>startPlace</code>, <code>subjectOf</code>, <code>subject</code>, <code>type</code>, <code>uri</code>, and <code>url</code>). All fields except <code>from</code> and <code>to</code> are optional.</p>
 <table>
 <thead>
 <tr class="header">
@@ -1299,53 +1353,53 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <thead>
 <tr class="header">
 <th style="text-align: left;">data type</th>
-<th style="text-align: left;">open world</th>
-<th style="text-align: left;">closed world</th>
-<th style="text-align: left;">explicit negation</th>
+<th>open world</th>
+<th>closed world</th>
+<th>explicit negation</th>
 <th style="text-align: left;">explicit existence</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><a href="#list">list</a></td>
-<td style="text-align: left;">no field</td>
-<td style="text-align: left;"><code>[...]</code></td>
-<td style="text-align: left;"><code>[]</code></td>
+<td>no field</td>
+<td><code>[...]</code></td>
+<td><code>[]</code></td>
 <td style="text-align: left;"><code>[null]</code> or <code>[..., null]</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#set">set</a></td>
-<td style="text-align: left;">no field</td>
-<td style="text-align: left;"><code>[...]</code></td>
-<td style="text-align: left;"><code>[]</code></td>
+<td>no field</td>
+<td><code>[...]</code></td>
+<td><code>[]</code></td>
 <td style="text-align: left;"><code>[null]</code> or <code>[..., null]</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="#language-map">language map</a></td>
-<td style="text-align: left;">no field</td>
-<td style="text-align: left;"><code>{...}</code></td>
-<td style="text-align: left;">no language tag</td>
+<td>no field</td>
+<td><code>{...}</code></td>
+<td>no language tag</td>
 <td style="text-align: left;"><code>{&quot;-&quot;:&quot;&quot;}</code> or <code>{&quot;-&quot;:[&quot;&quot;]}</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#resource">resource</a></td>
-<td style="text-align: left;">no field</td>
-<td style="text-align: left;"><code>{...}</code></td>
-<td style="text-align: left;">-</td>
+<td>no field</td>
+<td><code>{...}</code></td>
+<td>-</td>
 <td style="text-align: left;"><code>{}</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="#uri">URI</a>/<a href="#url">URL</a></td>
-<td style="text-align: left;">no field</td>
-<td style="text-align: left;"><code>&quot;...&quot;</code></td>
-<td style="text-align: left;">-</td>
+<td>no field</td>
+<td><code>&quot;...&quot;</code></td>
+<td>-</td>
 <td style="text-align: left;">-</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#date">date</a></td>
-<td style="text-align: left;">no field</td>
-<td style="text-align: left;"><code>&quot;...&quot;</code></td>
-<td style="text-align: left;">-</td>
+<td>no field</td>
+<td><code>&quot;...&quot;</code></td>
+<td>-</td>
 <td style="text-align: left;">-</td>
 </tr>
 </tbody>
@@ -1544,9 +1598,21 @@ A Concept Scheme represents a [SKOS Concept Scheme].
     <span class="dt">&quot;@reverse&quot;</span><span class="fu">:</span> <span class="st">&quot;http://purl.org/dc/terms/subject&quot;</span><span class="fu">,</span>
     <span class="dt">&quot;@container&quot;</span><span class="fu">:</span> <span class="st">&quot;@set&quot;</span>
   <span class="fu">},</span>
+  <span class="dt">&quot;source&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;@id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://purl.org/dc/terms/source&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;@container&quot;</span><span class="fu">:</span> <span class="st">&quot;@set&quot;</span>
+  <span class="fu">},</span>
   <span class="dt">&quot;depiction&quot;</span><span class="fu">:</span> <span class="fu">{</span>
     <span class="dt">&quot;@id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://xmlns.com/foaf/0.1/depiction&quot;</span><span class="fu">,</span>
     <span class="dt">&quot;@type&quot;</span><span class="fu">:</span> <span class="st">&quot;@id&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;@container&quot;</span><span class="fu">:</span> <span class="st">&quot;@set&quot;</span>
+  <span class="fu">},</span>
+  <span class="dt">&quot;startPlace&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;@id&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/location&quot;</span><span class="fu">,</span>
+    <span class="dt">&quot;@container&quot;</span><span class="fu">:</span> <span class="st">&quot;@set&quot;</span>
+  <span class="fu">},</span>
+  <span class="dt">&quot;endPlace&quot;</span><span class="fu">:</span> <span class="fu">{</span>
+    <span class="dt">&quot;@id&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/location&quot;</span><span class="fu">,</span>
     <span class="dt">&quot;@container&quot;</span><span class="fu">:</span> <span class="st">&quot;@set&quot;</span>
   <span class="fu">},</span>
 
@@ -1575,6 +1641,15 @@ A Concept Scheme represents a [SKOS Concept Scheme].
   <span class="dt">&quot;endDate&quot;</span><span class="fu">:</span> <span class="st">&quot;http://schema.org/endDate&quot;</span><span class="fu">,</span>
   <span class="dt">&quot;relatedDate&quot;</span><span class="fu">:</span> <span class="st">&quot;http://www.w3.org/2000/01/rdf-schema#seeAlso&quot;</span><span class="fu">,</span>
   <span class="dt">&quot;location&quot;</span><span class="fu">:</span> <span class="st">&quot;http://schema.org/location&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;address&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/address&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;street&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/streetAddress&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;ext&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/streetAddress&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;pobox&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/postOfficeBoxNumber&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;locality&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/addressLocality&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;region&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/addressRegion&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;code&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/postalCode&quot;</span><span class="fu">,</span>
+  <span class="dt">&quot;country&quot;</span><span class="fu">:</span> <span class="st">&quot;https://schema.org/addressCountry&quot;</span><span class="fu">,</span>
+
   <span class="dt">&quot;ancestors&quot;</span><span class="fu">:</span> <span class="fu">{</span>
     <span class="dt">&quot;@id&quot;</span><span class="fu">:</span> <span class="st">&quot;http://www.w3.org/2004/02/skos/core#broaderTransitive&quot;</span><span class="fu">,</span>
     <span class="dt">&quot;@container&quot;</span><span class="fu">:</span> <span class="st">&quot;@set&quot;</span>
@@ -1657,25 +1732,33 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <section id="changelog" class="level2 unnumbered">
 <h2>Changelog</h2>
 <section id="section" class="level3 unnumbered">
+<h3>0.4.7 (2021-02-10)</h3>
+<ul>
+<li>Add resource field source</li>
+<li>Add item field address</li>
+<li>Move startPlace/endPlace to Item and map them to schema:location</li>
+</ul>
+</section>
+<section id="section-1" class="level3 unnumbered">
 <h3>0.4.6 (2019-12-02)</h3>
 <ul>
 <li>Add memberRoles</li>
 </ul>
 </section>
-<section id="section-1" class="level3 unnumbered">
+<section id="section-2" class="level3 unnumbered">
 <h3>0.4.5 (2019-04-08)</h3>
 <ul>
 <li>Add annotations (basic support)</li>
 </ul>
 </section>
-<section id="section-2" class="level3 unnumbered">
+<section id="section-3" class="level3 unnumbered">
 <h3>0.4.4 (2018-11-02)</h3>
 <ul>
 <li>Add concept scheme fields notationPattern and uriPattern</li>
 <li>Add concept fields startPlace and endPlace</li>
 </ul>
 </section>
-<section id="section-3" class="level3 unnumbered">
+<section id="section-4" class="level3 unnumbered">
 <h3>0.4.2 (2018-08-22)</h3>
 <ul>
 <li>Move identifier field from item to resource</li>
@@ -1683,14 +1766,14 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Add optional JSON Schemas</li>
 </ul>
 </section>
-<section id="section-4" class="level3 unnumbered">
+<section id="section-5" class="level3 unnumbered">
 <h3>0.4.1 (2018-06-26)</h3>
 <ul>
 <li>Rename distribution field to distributions</li>
 <li>Allow digits in custom fields</li>
 </ul>
 </section>
-<section id="section-5" class="level3 unnumbered">
+<section id="section-6" class="level3 unnumbered">
 <h3>0.4.0 (2018-06-22)</h3>
 <ul>
 <li>Add Registry field occurrences</li>
@@ -1698,38 +1781,38 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Change rule for custom fields</li>
 </ul>
 </section>
-<section id="section-6" class="level3 unnumbered">
+<section id="section-7" class="level3 unnumbered">
 <h3>0.3.2 (2018-05-29)</h3>
 <ul>
 <li>Add Concept Scheme field namespace</li>
 </ul>
 </section>
-<section id="section-7" class="level3 unnumbered">
+<section id="section-8" class="level3 unnumbered">
 <h3>0.3.1 (2017-11-22)</h3>
 <ul>
 <li>Extend ocurrences to co-occurrences</li>
 </ul>
 </section>
-<section id="section-8" class="level3 unnumbered">
+<section id="section-9" class="level3 unnumbered">
 <h3>0.3.0 (2017-11-15)</h3>
 <ul>
 <li>Add occurrences</li>
 </ul>
 </section>
-<section id="section-9" class="level3 unnumbered">
+<section id="section-10" class="level3 unnumbered">
 <h3>0.2.2 (2017-11-06)</h3>
 <ul>
 <li>Add mappings field to Concept</li>
 </ul>
 </section>
-<section id="section-10" class="level3 unnumbered">
+<section id="section-11" class="level3 unnumbered">
 <h3>0.2.1 (2017-09-27)</h3>
 <ul>
 <li>Disallow empty strings except as mandatory placeholder with language ranges</li>
 <li>Support composed concepts with <code>memberSet</code> and <code>memberList</code></li>
 </ul>
 </section>
-<section id="section-11" class="level3 unnumbered">
+<section id="section-12" class="level3 unnumbered">
 <h3>0.2.0 (2017-09-21)</h3>
 <ul>
 <li>Rename object to resource</li>
@@ -1738,26 +1821,26 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Update JSON-LD context document</li>
 </ul>
 </section>
-<section id="section-12" class="level3 unnumbered">
+<section id="section-13" class="level3 unnumbered">
 <h3>0.1.4 (2016-12-02)</h3>
 <ul>
 <li>Update JSON-LD context document</li>
 <li>Change definition of concept bundles to use fields memberSet/List/Choice instead of members</li>
 </ul>
 </section>
-<section id="section-13" class="level3 unnumbered">
+<section id="section-14" class="level3 unnumbered">
 <h3>0.1.3 (2016-10-03)</h3>
 <ul>
 <li>Change definition of “location” field to subset of GeoJSON (RFC 7946)</li>
 </ul>
 </section>
-<section id="section-14" class="level3 unnumbered">
+<section id="section-15" class="level3 unnumbered">
 <h3>0.1.2 (2016-06-13)</h3>
 <ul>
 <li>Add “location” field for geographic coordinates</li>
 </ul>
 </section>
-<section id="section-15" class="level3 unnumbered">
+<section id="section-16" class="level3 unnumbered">
 <h3>0.1.1 (2016-05-20)</h3>
 <ul>
 <li>Make field “license” a set instead of a single URI</li>
@@ -2000,7 +2083,7 @@ A Concept Scheme represents a [SKOS Concept Scheme].
     <span class="dt">&quot;to&quot;</span><span class="fu">:</span> <span class="fu">{</span>
         <span class="dt">&quot;memberSet&quot;</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/4074195-3&quot;</span><span class="fu">,</span>
-            <span class="dt">&quot;preflabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozyt&quot;</span> <span class="fu">}</span>
+            <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozyt&quot;</span> <span class="fu">}</span>
         <span class="fu">}</span> <span class="ot">]</span>
     <span class="fu">}</span>
 <span class="fu">}</span></code></pre></div>
@@ -2016,22 +2099,22 @@ A Concept Scheme represents a [SKOS Concept Scheme].
     <span class="dt">&quot;to&quot;</span><span class="fu">:</span> <span class="fu">{</span>
         <span class="dt">&quot;memberChoice&quot;</span><span class="fu">:</span> <span class="ot">[</span> <span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/4074195-3&quot;</span><span class="fu">,</span>
-            <span class="dt">&quot;preflabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozyt&quot;</span> <span class="fu">}</span>
+            <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozyt&quot;</span> <span class="fu">}</span>
           <span class="fu">}</span><span class="ot">,</span><span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/4141893-1&quot;</span><span class="fu">,</span>
-            <span class="dt">&quot;preflabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Alkalische Leukozytenphosphatase&quot;</span> <span class="fu">}</span>
+            <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Alkalische Leukozytenphosphatase&quot;</span> <span class="fu">}</span>
           <span class="fu">}</span><span class="ot">,</span><span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/7606617-4&quot;</span><span class="fu">,</span>
-            <span class="dt">&quot;preflabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Blutlymphozyt&quot;</span> <span class="fu">}</span>
+            <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Blutlymphozyt&quot;</span> <span class="fu">}</span>
           <span class="fu">}</span><span class="ot">,</span><span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/4158047-3&quot;</span><span class="fu">,</span>
-            <span class="dt">&quot;preflabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Granulozyt&quot;</span> <span class="fu">}</span>
+            <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Granulozyt&quot;</span> <span class="fu">}</span>
           <span class="fu">}</span><span class="ot">,</span><span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/4227943-4&quot;</span><span class="fu">,</span>
-            <span class="dt">&quot;preflabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozytenadhäsion&quot;</span> <span class="fu">}</span>
+            <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozytenadhäsion&quot;</span> <span class="fu">}</span>
           <span class="fu">}</span><span class="ot">,</span><span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/4166696-3&quot;</span><span class="fu">,</span>
-            <span class="dt">&quot;preflabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozytenphosphatase&quot;</span> <span class="fu">}</span>
+            <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Leukozytenphosphatase&quot;</span> <span class="fu">}</span>
           <span class="fu">}</span><span class="ot">,</span><span class="fu">{</span>
             <span class="dt">&quot;uri&quot;</span><span class="fu">:</span> <span class="st">&quot;http://d-nb.info/gnd/4285013-7&quot;</span><span class="fu">,</span>
             <span class="dt">&quot;prefLabel&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;de&quot;</span><span class="fu">:</span> <span class="st">&quot;Monozyt&quot;</span> <span class="fu">}</span>

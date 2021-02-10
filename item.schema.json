@@ -47,6 +47,19 @@
         "type"
       ],
       "additionalProperties": true
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "street":   { "type": "string" },
+        "ext":      { "type": "string" },
+        "pobox":    { "type": "string" },
+        "locality": { "type": "string" },
+        "region":   { "type": "string" },
+        "code":     { "type": "string" },
+        "country":  { "type": "string" }
+      },
+      "additionalProperties": false
     }
   },
   "allOf": [
@@ -119,13 +132,21 @@
       "description": "geographic location of the item",
       "$ref": "#/definitions/location"
     },
+    "address": {
+      "description": "geographic location of the item",
+      "$ref": "#/definitions/address"
+    },
     "subject": {
       "description": "what this item is about (e.g. topic)",
-      "$ref": "resource.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "subjectOf": {
       "description": "resources about this item (e.g. documentation)",
-      "$ref": "resource.schema.json#/definitions/set"
+      "$ref": "concept.schema.json#/definitions/conceptSet"
+    },
+    "source": {
+      "description": "sources from which the described resource is derived",
+      "$ref": "concept.schema.json#/definitions/conceptSet"
     },
     "depiction": {
       "description": "list of image URLs depicting the item",
