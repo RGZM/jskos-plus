@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Jakob Voß" />
-  <meta name="date" content="2021-02-10" />
+  <meta name="date" content="2021-02-18" />
   <title>JSKOS data format for Knowledge Organization Systems</title>
    <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -74,7 +74,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <header>
 <h1 class="title">JSKOS data format for Knowledge Organization Systems</h1>
 <h3 class="author">Jakob Voß</h3>
-<h4 class="date">2021-02-10 (version 0.4.7)</h4>
+<h4 class="date">2021-02-18 (version 0.4.8)</h4>
 </header>
 
 <h1>Table of Contents</h1>
@@ -239,24 +239,24 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <table>
 <thead>
 <tr class="header">
-<th></th>
-<th>JSKOS</th>
-<th>RFC 3066</th>
-<th>RFC 4647</th>
+<th style="text-align: left;"></th>
+<th style="text-align: left;">JSKOS</th>
+<th style="text-align: left;">RFC 3066</th>
+<th style="text-align: left;">RFC 4647</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>language tag for English</td>
-<td><code>en</code></td>
-<td><code>en</code></td>
-<td></td>
+<td style="text-align: left;">language tag for English</td>
+<td style="text-align: left;"><code>en</code></td>
+<td style="text-align: left;"><code>en</code></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
-<td>languag range for all English variants</td>
-<td><code>en-</code></td>
-<td></td>
-<td><code>en</code></td>
+<td style="text-align: left;">languag range for all English variants</td>
+<td style="text-align: left;"><code>en-</code></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"><code>en</code></td>
 </tr>
 </tbody>
 </table>
@@ -319,37 +319,37 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <thead>
 <tr class="header">
 <th style="text-align: left;">field</th>
-<th>description</th>
+<th style="text-align: left;">description</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">street</td>
-<td>the street address</td>
+<td style="text-align: left;">the street address</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">ext</td>
-<td>the extended address (e.g., apartment or suite number)</td>
+<td style="text-align: left;">the extended address (e.g., apartment or suite number)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">pobox</td>
-<td>the post office box</td>
+<td style="text-align: left;">the post office box</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">locality</td>
-<td>the locality (e.g., city)</td>
+<td style="text-align: left;">the locality (e.g., city)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">region</td>
-<td>the region (e.g., state or province)</td>
+<td style="text-align: left;">the region (e.g., state or province)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">code</td>
-<td>the postal code</td>
+<td style="text-align: left;">the postal code</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">country</td>
-<td>the country name</td>
+<td style="text-align: left;">the country name</td>
 </tr>
 </tbody>
 </table>
@@ -758,31 +758,36 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <td style="text-align: left;">regular expression that all primary notations should follow</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">notationExamples</td>
+<td style="text-align: left;"><a href="#list">list</a> of string</td>
+<td style="text-align: left;">list of some valid notations as examples</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">concepts</td>
 <td style="text-align: left;"><a href="#url">URL</a> or <a href="#set">set</a></td>
 <td style="text-align: left;">JSKOS API concepts endpoint returning all concepts in this scheme</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">types</td>
 <td style="text-align: left;"><a href="#url">URL</a> or <a href="#set">set</a></td>
 <td style="text-align: left;">JSKOS API types endpoint returning all <a href="#item-and-concept-types">concept types</a> in this scheme</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">distributions</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;"><a href="#distributions">Distributions</a> to access the content of the concept scheme</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">extent</td>
 <td style="text-align: left;">string</td>
 <td style="text-align: left;">Size of the concept scheme</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">languages</td>
 <td style="text-align: left;"><a href="#list">list</a> of language tags</td>
 <td style="text-align: left;">Supported languages</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">license</td>
 <td style="text-align: left;"><a href="#set">set</a></td>
 <td style="text-align: left;">Licenses which the full scheme can be used under</td>
@@ -1353,53 +1358,53 @@ alpha          = %x61-7A  ; a-z</code></pre>
 <thead>
 <tr class="header">
 <th style="text-align: left;">data type</th>
-<th>open world</th>
-<th>closed world</th>
-<th>explicit negation</th>
+<th style="text-align: left;">open world</th>
+<th style="text-align: left;">closed world</th>
+<th style="text-align: left;">explicit negation</th>
 <th style="text-align: left;">explicit existence</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><a href="#list">list</a></td>
-<td>no field</td>
-<td><code>[...]</code></td>
-<td><code>[]</code></td>
+<td style="text-align: left;">no field</td>
+<td style="text-align: left;"><code>[...]</code></td>
+<td style="text-align: left;"><code>[]</code></td>
 <td style="text-align: left;"><code>[null]</code> or <code>[..., null]</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#set">set</a></td>
-<td>no field</td>
-<td><code>[...]</code></td>
-<td><code>[]</code></td>
+<td style="text-align: left;">no field</td>
+<td style="text-align: left;"><code>[...]</code></td>
+<td style="text-align: left;"><code>[]</code></td>
 <td style="text-align: left;"><code>[null]</code> or <code>[..., null]</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="#language-map">language map</a></td>
-<td>no field</td>
-<td><code>{...}</code></td>
-<td>no language tag</td>
+<td style="text-align: left;">no field</td>
+<td style="text-align: left;"><code>{...}</code></td>
+<td style="text-align: left;">no language tag</td>
 <td style="text-align: left;"><code>{&quot;-&quot;:&quot;&quot;}</code> or <code>{&quot;-&quot;:[&quot;&quot;]}</code></td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#resource">resource</a></td>
-<td>no field</td>
-<td><code>{...}</code></td>
-<td>-</td>
+<td style="text-align: left;">no field</td>
+<td style="text-align: left;"><code>{...}</code></td>
+<td style="text-align: left;">-</td>
 <td style="text-align: left;"><code>{}</code></td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><a href="#uri">URI</a>/<a href="#url">URL</a></td>
-<td>no field</td>
-<td><code>&quot;...&quot;</code></td>
-<td>-</td>
+<td style="text-align: left;">no field</td>
+<td style="text-align: left;"><code>&quot;...&quot;</code></td>
+<td style="text-align: left;">-</td>
 <td style="text-align: left;">-</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;"><a href="#date">date</a></td>
-<td>no field</td>
-<td><code>&quot;...&quot;</code></td>
-<td>-</td>
+<td style="text-align: left;">no field</td>
+<td style="text-align: left;"><code>&quot;...&quot;</code></td>
+<td style="text-align: left;">-</td>
 <td style="text-align: left;">-</td>
 </tr>
 </tbody>
@@ -1732,6 +1737,12 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <section id="changelog" class="level2 unnumbered">
 <h2>Changelog</h2>
 <section id="section" class="level3 unnumbered">
+<h3>0.4.8 (2021-02-18)</h3>
+<ul>
+<li>Add concept scheme field notationExamples</li>
+</ul>
+</section>
+<section id="section-1" class="level3 unnumbered">
 <h3>0.4.7 (2021-02-10)</h3>
 <ul>
 <li>Add resource field source</li>
@@ -1739,26 +1750,26 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Move startPlace/endPlace to Item and map them to schema:location</li>
 </ul>
 </section>
-<section id="section-1" class="level3 unnumbered">
+<section id="section-2" class="level3 unnumbered">
 <h3>0.4.6 (2019-12-02)</h3>
 <ul>
 <li>Add memberRoles</li>
 </ul>
 </section>
-<section id="section-2" class="level3 unnumbered">
+<section id="section-3" class="level3 unnumbered">
 <h3>0.4.5 (2019-04-08)</h3>
 <ul>
 <li>Add annotations (basic support)</li>
 </ul>
 </section>
-<section id="section-3" class="level3 unnumbered">
+<section id="section-4" class="level3 unnumbered">
 <h3>0.4.4 (2018-11-02)</h3>
 <ul>
 <li>Add concept scheme fields notationPattern and uriPattern</li>
 <li>Add concept fields startPlace and endPlace</li>
 </ul>
 </section>
-<section id="section-4" class="level3 unnumbered">
+<section id="section-5" class="level3 unnumbered">
 <h3>0.4.2 (2018-08-22)</h3>
 <ul>
 <li>Move identifier field from item to resource</li>
@@ -1766,14 +1777,14 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Add optional JSON Schemas</li>
 </ul>
 </section>
-<section id="section-5" class="level3 unnumbered">
+<section id="section-6" class="level3 unnumbered">
 <h3>0.4.1 (2018-06-26)</h3>
 <ul>
 <li>Rename distribution field to distributions</li>
 <li>Allow digits in custom fields</li>
 </ul>
 </section>
-<section id="section-6" class="level3 unnumbered">
+<section id="section-7" class="level3 unnumbered">
 <h3>0.4.0 (2018-06-22)</h3>
 <ul>
 <li>Add Registry field occurrences</li>
@@ -1781,38 +1792,38 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Change rule for custom fields</li>
 </ul>
 </section>
-<section id="section-7" class="level3 unnumbered">
+<section id="section-8" class="level3 unnumbered">
 <h3>0.3.2 (2018-05-29)</h3>
 <ul>
 <li>Add Concept Scheme field namespace</li>
 </ul>
 </section>
-<section id="section-8" class="level3 unnumbered">
+<section id="section-9" class="level3 unnumbered">
 <h3>0.3.1 (2017-11-22)</h3>
 <ul>
 <li>Extend ocurrences to co-occurrences</li>
 </ul>
 </section>
-<section id="section-9" class="level3 unnumbered">
+<section id="section-10" class="level3 unnumbered">
 <h3>0.3.0 (2017-11-15)</h3>
 <ul>
 <li>Add occurrences</li>
 </ul>
 </section>
-<section id="section-10" class="level3 unnumbered">
+<section id="section-11" class="level3 unnumbered">
 <h3>0.2.2 (2017-11-06)</h3>
 <ul>
 <li>Add mappings field to Concept</li>
 </ul>
 </section>
-<section id="section-11" class="level3 unnumbered">
+<section id="section-12" class="level3 unnumbered">
 <h3>0.2.1 (2017-09-27)</h3>
 <ul>
 <li>Disallow empty strings except as mandatory placeholder with language ranges</li>
 <li>Support composed concepts with <code>memberSet</code> and <code>memberList</code></li>
 </ul>
 </section>
-<section id="section-12" class="level3 unnumbered">
+<section id="section-13" class="level3 unnumbered">
 <h3>0.2.0 (2017-09-21)</h3>
 <ul>
 <li>Rename object to resource</li>
@@ -1821,26 +1832,26 @@ A Concept Scheme represents a [SKOS Concept Scheme].
 <li>Update JSON-LD context document</li>
 </ul>
 </section>
-<section id="section-13" class="level3 unnumbered">
+<section id="section-14" class="level3 unnumbered">
 <h3>0.1.4 (2016-12-02)</h3>
 <ul>
 <li>Update JSON-LD context document</li>
 <li>Change definition of concept bundles to use fields memberSet/List/Choice instead of members</li>
 </ul>
 </section>
-<section id="section-14" class="level3 unnumbered">
+<section id="section-15" class="level3 unnumbered">
 <h3>0.1.3 (2016-10-03)</h3>
 <ul>
 <li>Change definition of “location” field to subset of GeoJSON (RFC 7946)</li>
 </ul>
 </section>
-<section id="section-15" class="level3 unnumbered">
+<section id="section-16" class="level3 unnumbered">
 <h3>0.1.2 (2016-06-13)</h3>
 <ul>
 <li>Add “location” field for geographic coordinates</li>
 </ul>
 </section>
-<section id="section-16" class="level3 unnumbered">
+<section id="section-17" class="level3 unnumbered">
 <h3>0.1.1 (2016-05-20)</h3>
 <ul>
 <li>Make field “license” a set instead of a single URI</li>
