@@ -10,8 +10,8 @@ install:
   - npm install
 
 script:
-  - npm test      # validate examples against JSON Schema
-  - make          # build jskos.html
+  - npm test     # validate examples against JSON Schema
+  - make         # build jskos.html
 
 after_success:
   - cp jskos.html gh-pages
