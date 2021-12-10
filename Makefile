@@ -1,8 +1,8 @@
-TITLE  = JSKOS data format for Knowledge Organization Systems
-AUTHOR = Jakob Voß
+TITLE  = JSKOS+ - An extended data format for KOS based on JSKOS
+AUTHOR = Florian Thiery, Allard Mees, based on Jakob Voß
 
-NAME   = jskos
-GITHUB = https://github.com/gbv/jskos
+NAME   = jskos+
+GITHUB = https://rgzm.github.io/jskos-plus/
 
 include makespec/Makefile
 
