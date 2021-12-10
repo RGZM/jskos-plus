@@ -1,5 +1,5 @@
 TITLE  = JSKOS+ - An extended data format for KOS based on JSKOS
-AUTHOR = Florian Thiery, Allard Mees, based on Jakob Voß
+AUTHOR = Florian Thiery, Timo Homburg, Allard Mees, based on Jakob Voß
 
 NAME   = jskos+
 GITHUB = https://rgzm.github.io/jskos-plus/
